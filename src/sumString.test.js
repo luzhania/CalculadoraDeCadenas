@@ -16,3 +16,8 @@ describe("Sum string separated by commas", () => {
     expect(sumString("2,5,1")).toEqual(8);
   });
 });
+describe("Sum string separated by hyphen", () => {
+  it("should return the sum of the string of two numbers separated by hyphen", () => {
+    expect(sumString("2-5")).toEqual(7);
+  });
+});
