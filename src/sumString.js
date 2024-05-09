@@ -1,5 +1,8 @@
 function sumString(stringOfNumbers) {
-  return 0;
+  if (stringOfNumbers === "") {
+    return 0;
+  }
+  return parseInt(stringOfNumbers);
 }
 
 export default sumString;
