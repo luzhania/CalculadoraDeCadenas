@@ -3,10 +3,11 @@ function sumString(stringOfNumbers) {
     return 0;
   }
   const numbers = stringOfNumbers.split(",");
-  if (numbers.length === 1) {
-    return parseInt(numbers[0]);
+  let sum = 0;
+  for (let actualNumber = 0; actualNumber < numbers.length; actualNumber++) {
+    sum += parseInt(numbers[actualNumber]);
   }
-  return parseInt(numbers[0]) + parseInt(numbers[1]);
+  return sum;
 }
 
 export default sumString;
