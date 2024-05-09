@@ -8,3 +8,8 @@ describe("Sum string", () => {
     expect(sumString("2")).toEqual(2);
   });
 });
+describe("Sum string separated by commas", () => {
+  it("should return the sum of the string of two numbers separated by comma", () => {
+    expect(sumString("2,5")).toEqual(7);
+  });
+});
