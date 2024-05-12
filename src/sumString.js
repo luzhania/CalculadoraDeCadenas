@@ -1,6 +1,5 @@
 function formatString(stringOfNumbers) {
-  stringOfNumbers = stringOfNumbers.replace(/-/g, ",");
-  return stringOfNumbers.split(",");
+  return stringOfNumbers.split(/-|,/);
 }
 
 function sumNumbers(numbers) {
