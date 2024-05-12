@@ -23,4 +23,7 @@ describe("Sum string separated by hyphen", () => {
   it("should return the sum of the string of many numbers separated by hyphen", () => {
     expect(sumString("2-5-3-4-10")).toEqual(24);
   });
+  it("should return the sum of the string of many numbers separated by hyphen or comma", () => {
+    expect(sumString("2-5,3-4,10")).toEqual(24);
+  });  
 });
