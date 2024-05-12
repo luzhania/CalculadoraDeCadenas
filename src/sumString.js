@@ -1,6 +1,6 @@
-let delimiter = "|,";
+let delimiters = "|-";
 
-function formatDelimeters(delimiter){
+function formatDelimeter(delimiter){
   let delimiterFormated = "";
   for (let i = 0; i < delimiter.length; i++) {
       delimiterFormated += "|\\" + delimiter[i];
@@ -9,17 +9,23 @@ function formatDelimeters(delimiter){
 }
 
 function formatStringOfNumbers(stringOfNumbers) {
-  return stringOfNumbers.split(new RegExp('-|,' + delimiter));
+  return stringOfNumbers.split(new RegExp(',' + delimiters));
+}
+
+function extractDelimeter(unformatedDelimiters) {
+  let endOfDelimeter = unformatedDelimiters.indexOf("]");
+  delimiters += formatDelimeter(unformatedDelimiters.substring(1, endOfDelimeter));
+  return delimiters;
 }
 
 function extractDelimeters(numbersWithDelimiter, endOfDelimeters) {
   let unformatedDelimiters = numbersWithDelimiter.substring(2, endOfDelimeters+1);
   while (unformatedDelimiters.includes("[")) {
     let endOfDelimeter = unformatedDelimiters.indexOf("]");
-    delimiter += formatDelimeters(unformatedDelimiters.substring(1, endOfDelimeter));
+    delimiters = extractDelimeter(unformatedDelimiters);
     unformatedDelimiters = unformatedDelimiters.substring(endOfDelimeter + 1);
   }
-  return delimiter;
+  return delimiters;
 }
 
 function extractNumbers(numbersWithDelimiter, endOfDelimeter) {
@@ -29,7 +35,7 @@ function extractNumbers(numbersWithDelimiter, endOfDelimeter) {
 function formatStringWithDelimeter(numbersWithDelimiter) {
   if (numbersWithDelimiter.startsWith("//")) {
     let endOfDelimeters = numbersWithDelimiter.lastIndexOf("]");
-    delimiter = extractDelimeters(numbersWithDelimiter, endOfDelimeters);
+    delimiters = extractDelimeters(numbersWithDelimiter, endOfDelimeters);
     return extractNumbers(numbersWithDelimiter, endOfDelimeters);
   }
   return numbersWithDelimiter;
