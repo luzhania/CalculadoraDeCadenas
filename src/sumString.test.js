@@ -40,3 +40,9 @@ describe("Sum string separated by a specified delimiter", () => {
     expect(sumString("//[;] 6;7,3;1-10")).toEqual(27);
   });
 });
+
+describe("Sum string", () => {
+  it("Numbers greater than 1000 should be ignored", () => {
+    expect(sumString("//[;] 2;1001")).toEqual(2);
+  });
+});

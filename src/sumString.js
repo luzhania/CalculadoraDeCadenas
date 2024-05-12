@@ -15,7 +15,9 @@ function formatStringWithDelimeter(numbersWithDelimiter) {
 function sumNumbers(numbers) {
   let sum = 0;
   for (let actualNumber = 0; actualNumber < numbers.length; actualNumber++) {
-    sum += parseInt(numbers[actualNumber]);
+    if (parseInt(numbers[actualNumber]) <= 1000) {
+      sum += parseInt(numbers[actualNumber]);
+    }
   }
   return sum;
 }
