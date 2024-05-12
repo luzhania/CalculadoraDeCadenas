@@ -1,13 +1,23 @@
 let delimiter = ",";
 
+function formatDelimeter(delimiter){
+  let delimiterFormated = "";
+  for (let i = 0; i < delimiter.length; i++) {
+      delimiterFormated += "\\" + delimiter[i];
+  }
+  return delimiterFormated;
+}
+
 function formatStringOfNumbers(stringOfNumbers) {
   return stringOfNumbers.split(new RegExp('-|,' + '|' + delimiter));
 }
 
 function formatStringWithDelimeter(numbersWithDelimiter) {
   if (numbersWithDelimiter.startsWith("//")) {
-    delimiter = numbersWithDelimiter[3];
-    return numbersWithDelimiter.substring(6);
+    let end = numbersWithDelimiter.indexOf("]");
+    delimiter = numbersWithDelimiter.substring(3, end);
+    delimiter = formatDelimeter(delimiter);
+    return numbersWithDelimiter.substring(end + 2, numbersWithDelimiter.length);
   }
   return numbersWithDelimiter;
 }
@@ -32,4 +42,5 @@ function sumString(numbersWithDelimiter) {
   return sum;
 }
 
+sumString("//[***] 1***2");
 export default sumString;
