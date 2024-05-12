@@ -36,4 +36,7 @@ describe("Sum string separated by a specified delimiter", () => {
   it("should return the sum of the string of many numbers separated by a specified delimiter", () => {
     expect(sumString("//[;] 6;7;3")).toEqual(16);
   });
+  it("should return the sum of the string of many numbers separated by hyphen or comma or a specified delimiter", () => {
+    expect(sumString("//[;] 6;7,3;1-10")).toEqual(27);
+  });
 });

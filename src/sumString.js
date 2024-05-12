@@ -1,5 +1,15 @@
-function formatString(stringOfNumbers) {
-  return stringOfNumbers.split(/-|,/);
+let delimiter = ",";
+
+function formatStringOfNumbers(stringOfNumbers) {
+  return stringOfNumbers.split(new RegExp('-|,' + '|' + delimiter));
+}
+
+function formatStringWithDelimeter(numbersWithDelimiter) {
+  if (numbersWithDelimiter.startsWith("//")) {
+    delimiter = numbersWithDelimiter[3];
+    return numbersWithDelimiter.substring(6);
+  }
+  return numbersWithDelimiter;
 }
 
 function sumNumbers(numbers) {
@@ -14,15 +24,8 @@ function sumString(numbersWithDelimiter) {
   if (numbersWithDelimiter === "") {
     return 0;
   }
-  let numbers;
-  if (numbersWithDelimiter.startsWith("//")) {
-    let delimiter = numbersWithDelimiter[3];
-    let numbersWithoutDelimiter = numbersWithDelimiter.slice(5);
-    numbers = numbersWithoutDelimiter.split(new RegExp(delimiter));
-  }
-  else{
-    numbers = formatString(numbersWithDelimiter);
-  }
+  let stringOfNumbers = formatStringWithDelimeter(numbersWithDelimiter);
+  let numbers = formatStringOfNumbers(stringOfNumbers);
   let sum = sumNumbers(numbers);
   return sum;
 }
