@@ -45,4 +45,7 @@ describe("Sum string", () => {
   it("Numbers greater than 1000 should be ignored", () => {
     expect(sumString("//[;] 2;1001")).toEqual(2);
   });
+  it("Numbers less or equal than 1000 shouldn't be ignored", () => {
+    expect(sumString("//[;] 2;1000")).toEqual(1002);
+  });
 });
