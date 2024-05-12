@@ -1,20 +1,25 @@
-let delimiter = ",";
+let delimiter = "|,";
 
-function formatDelimeter(delimiter){
+function formatDelimeters(delimiter){
   let delimiterFormated = "";
   for (let i = 0; i < delimiter.length; i++) {
-      delimiterFormated += "\\" + delimiter[i];
+      delimiterFormated += "|\\" + delimiter[i];
   }
   return delimiterFormated;
 }
 
 function formatStringOfNumbers(stringOfNumbers) {
-  return stringOfNumbers.split(new RegExp('-|,' + '|' + delimiter));
+  return stringOfNumbers.split(new RegExp('-|,' + delimiter));
 }
 
-function extractDelimeter(numbersWithDelimiter, endOfDelimeter) {
-  let unformatedDelimiter = numbersWithDelimiter.substring(3, endOfDelimeter);
-  return formatDelimeter(unformatedDelimiter);
+function extractDelimeters(numbersWithDelimiter, endOfDelimeters) {
+  let unformatedDelimiters = numbersWithDelimiter.substring(2, endOfDelimeters+1);
+  while (unformatedDelimiters.includes("[")) {
+    let endOfDelimeter = unformatedDelimiters.indexOf("]");
+    delimiter += formatDelimeters(unformatedDelimiters.substring(1, endOfDelimeter));
+    unformatedDelimiters = unformatedDelimiters.substring(endOfDelimeter + 1);
+  }
+  return delimiter;
 }
 
 function extractNumbers(numbersWithDelimiter, endOfDelimeter) {
@@ -23,9 +28,9 @@ function extractNumbers(numbersWithDelimiter, endOfDelimeter) {
 
 function formatStringWithDelimeter(numbersWithDelimiter) {
   if (numbersWithDelimiter.startsWith("//")) {
-    let endOfDelimeter = numbersWithDelimiter.indexOf("]");
-    delimiter = extractDelimeter(numbersWithDelimiter, endOfDelimeter);
-    return extractNumbers(numbersWithDelimiter, endOfDelimeter);
+    let endOfDelimeters = numbersWithDelimiter.lastIndexOf("]");
+    delimiter = extractDelimeters(numbersWithDelimiter, endOfDelimeters);
+    return extractNumbers(numbersWithDelimiter, endOfDelimeters);
   }
   return numbersWithDelimiter;
 }
@@ -50,5 +55,4 @@ function sumString(numbersWithDelimiter) {
   return sum;
 }
 
-sumString("//[***] 1***2");
 export default sumString;

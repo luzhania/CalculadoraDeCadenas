@@ -61,3 +61,9 @@ describe("Delimiters of any length", () => {
     expect(sumString("//[***] 1,21***5-2***3")).toEqual(32);
   });
 });
+
+describe("Many delimiters", () => {
+  it("should return the sum of the string of many numbers separated by many specified delimiters", () => {
+    expect(sumString("//[*][%] 1*2%3,7-9")).toEqual(22);
+  });
+});
