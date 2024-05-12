@@ -10,11 +10,19 @@ function sumNumbers(numbers) {
   return sum;
 }
 
-function sumString(stringOfNumbers) {
-  if (stringOfNumbers === "") {
+function sumString(numbersWithDelimiter) {
+  if (numbersWithDelimiter === "") {
     return 0;
   }
-  let numbers = formatString(stringOfNumbers);
+  let numbers;
+  if (numbersWithDelimiter.startsWith("//")) {
+    let delimiter = numbersWithDelimiter[3];
+    let numbersWithoutDelimiter = numbersWithDelimiter.slice(5);
+    numbers = numbersWithoutDelimiter.split(new RegExp(delimiter));
+  }
+  else{
+    numbers = formatString(numbersWithDelimiter);
+  }
   let sum = sumNumbers(numbers);
   return sum;
 }
