@@ -12,12 +12,20 @@ function formatStringOfNumbers(stringOfNumbers) {
   return stringOfNumbers.split(new RegExp('-|,' + '|' + delimiter));
 }
 
+function extractDelimeter(numbersWithDelimiter, endOfDelimeter) {
+  let unformatedDelimiter = numbersWithDelimiter.substring(3, endOfDelimeter);
+  return formatDelimeter(unformatedDelimiter);
+}
+
+function extractNumbers(numbersWithDelimiter, endOfDelimeter) {
+  return numbersWithDelimiter.substring(endOfDelimeter + 2)
+}
+
 function formatStringWithDelimeter(numbersWithDelimiter) {
   if (numbersWithDelimiter.startsWith("//")) {
-    let end = numbersWithDelimiter.indexOf("]");
-    delimiter = numbersWithDelimiter.substring(3, end);
-    delimiter = formatDelimeter(delimiter);
-    return numbersWithDelimiter.substring(end + 2, numbersWithDelimiter.length);
+    let endOfDelimeter = numbersWithDelimiter.indexOf("]");
+    delimiter = extractDelimeter(numbersWithDelimiter, endOfDelimeter);
+    return extractNumbers(numbersWithDelimiter, endOfDelimeter);
   }
   return numbersWithDelimiter;
 }
