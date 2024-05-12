@@ -54,4 +54,7 @@ describe("Delimiters of any length", () => {
   it("should return the sum of the string of two numbers separated by a specified delimiter of any length", () => {
     expect(sumString("//[***] 1***2")).toEqual(3);
   });
+  it("should return the sum of the string of many numbers separated by a specified delimiter of any length", () => {
+    expect(sumString("//[***] 1***21***5***2")).toEqual(29);
+  });
 });
