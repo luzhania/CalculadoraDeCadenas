@@ -40,9 +40,9 @@ function sumNumbers(numbers) {
   return sum;
 }
 
-function sumString(numbersWithDelimiter) {
-  let delimeters = extractDelimeters(numbersWithDelimiter);
-  let numbers = extractNumbers(numbersWithDelimiter, delimeters);
+function sumString(string) {
+  let delimeters = extractDelimeters(string);
+  let numbers = extractNumbers(string, delimeters);
   let sum = sumNumbers(numbers);
   return sum;
 }
