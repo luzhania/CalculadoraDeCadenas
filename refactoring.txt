@@ -6,3 +6,4 @@ repetición de código en sumNumbers
 función extractDelimeters muy larga
 unformatedDelimiters no refleja intención
 tipo de dato de variable delimeters no apropiado
+nombre stringOfNumbers en funcion extract nombres, muy largo y no refleja intención

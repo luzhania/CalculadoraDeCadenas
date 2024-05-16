@@ -2,12 +2,12 @@ function formatDelimeter(delimiter) {
   return delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function extractNumbers(stringOfNumbers, delimiters) {
-  if (stringOfNumbers.startsWith("//")) {
-    let endOfDelimeters = stringOfNumbers.lastIndexOf("]");
-    stringOfNumbers = stringOfNumbers.substring(endOfDelimeters + 2);
+function extractNumbers(string, delimiters) {
+  if (string.startsWith("//")) {
+    let endOfDelimeters = string.lastIndexOf("]");
+    string = string.substring(endOfDelimeters + 2);
   }
-  return stringOfNumbers.split(new RegExp(delimiters));
+  return string.split(new RegExp(delimiters));
 }
 
 function extractDelimeter(delimitersString) {
