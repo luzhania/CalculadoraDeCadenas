@@ -10,3 +10,4 @@ nombre numbersWithDelimiter en funcion sumString , muy largo y no refleja intenc
 nombre de función sumString no refleja muy bien la intención.
 función extractDelimeter muy larga
 función extractDelimeters muy larga
+repetición de código string.startsWith("//");

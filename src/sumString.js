@@ -2,8 +2,12 @@ function formatDelimeter(delimiter) {
   return delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function hasManyDelimiters(string) {
+  return string.startsWith("//");
+}
+
 function extractNumbers(string, delimiters) {
-  if (string.startsWith("//")) {
+  if (hasManyDelimiters(string)) {
     let endOfDelimeters = string.lastIndexOf("]");
     string = string.substring(endOfDelimeters + 2);
   }
@@ -12,7 +16,7 @@ function extractNumbers(string, delimiters) {
 
 function extractDelimeters(string) {
   let delimiters = [",", "-"];
-  if (string.startsWith("//")) {
+  if (hasManyDelimiters(string)) {
     let delimitersStart = string.indexOf("[") + 1;
     let delimitersEnd = string.lastIndexOf("]");
 
