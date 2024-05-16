@@ -52,9 +52,6 @@ function sumNumbers(numbers) {
 }
 
 function sumString(numbersWithDelimiter) {
-  if (numbersWithDelimiter === "") {
-    return 0;
-  }
   let stringOfNumbers = formatStringWithDelimeter(numbersWithDelimiter);
   let numbers = formatStringOfNumbers(stringOfNumbers);
   let sum = sumNumbers(numbers);

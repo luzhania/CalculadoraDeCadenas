@@ -1,0 +1,3 @@
+función sumString larga y poco entendible
+cambiar nombre de función formatStringWithDelimeter para que demuestre la intención
+cambiar nombre de función formatStringOfNumbers para que demuestre la intención
