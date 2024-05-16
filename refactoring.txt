@@ -4,3 +4,4 @@ función extractDelimeters con más de una responsabilidad
 cambiar nombre de función formatStringOfNumbers para que demuestre la intención
 repetición de código en sumNumbers
 función extractDelimeters muy larga
+unformatedDelimiters no refleja intención

@@ -1,5 +1,3 @@
-let delimiters = "|-";
-
 function formatDelimeter(delimiter) {
   let delimiterFormated = "";
   for (let i = 0; i < delimiter.length; i++) {
@@ -8,7 +6,7 @@ function formatDelimeter(delimiter) {
   return delimiterFormated;
 }
 
-function extractNumbers(stringOfNumbers) {
+function extractNumbers(stringOfNumbers, delimiters) {
   if (stringOfNumbers.startsWith("//")) {
     let endOfDelimeters = stringOfNumbers.lastIndexOf("]");
     stringOfNumbers = stringOfNumbers.substring(endOfDelimeters + 2);
@@ -16,22 +14,24 @@ function extractNumbers(stringOfNumbers) {
   return stringOfNumbers.split(new RegExp(',' + delimiters));
 }
 
-function extractDelimeter(unformatedDelimiters) {
-  let endOfDelimeter = unformatedDelimiters.indexOf("]");
-  delimiters += formatDelimeter(unformatedDelimiters.substring(1, endOfDelimeter));
+function extractDelimeter(delimitersString, delimiters) {
+  let endOfDelimeter = delimitersString.indexOf("]");
+  delimiters += formatDelimeter(delimitersString.substring(1, endOfDelimeter));
   return delimiters;
 }
 
 function extractDelimeters(numbersWithDelimiter) {
+  let delimiters = "|-";
   if (numbersWithDelimiter.startsWith("//")) {
     let endOfDelimeters = numbersWithDelimiter.lastIndexOf("]");
-    let unformatedDelimiters = numbersWithDelimiter.substring(2, endOfDelimeters + 1);
-    while (unformatedDelimiters.includes("[")) {
-      let endOfDelimeter = unformatedDelimiters.indexOf("]");
-      delimiters = extractDelimeter(unformatedDelimiters);
-      unformatedDelimiters = unformatedDelimiters.substring(endOfDelimeter + 1);
+    let delimitersString = numbersWithDelimiter.substring(2, endOfDelimeters + 1);
+    while (delimitersString.includes("[")) {
+      let endOfDelimeter = delimitersString.indexOf("]");
+      delimiters = extractDelimeter(delimitersString, delimiters);
+      delimitersString = delimitersString.substring(endOfDelimeter + 1);
     }
   }
+  return delimiters;
 }
 
 function sumNumbers(numbers) {
@@ -46,8 +46,8 @@ function sumNumbers(numbers) {
 }
 
 function sumString(numbersWithDelimiter) {
-  extractDelimeters(numbersWithDelimiter);
-  let numbers = extractNumbers(numbersWithDelimiter);
+  let delimeters = extractDelimeters(numbersWithDelimiter);
+  let numbers = extractNumbers(numbersWithDelimiter, delimeters);
   let sum = sumNumbers(numbers);
   return sum;
 }
