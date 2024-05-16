@@ -8,7 +8,7 @@ function formatDelimeter(delimiter) {
   return delimiterFormated;
 }
 
-function formatStringOfNumbers(stringOfNumbers) {
+function extractNumbers(stringOfNumbers) {
   if (stringOfNumbers.startsWith("//")) {
     let endOfDelimeters = stringOfNumbers.lastIndexOf("]");
     stringOfNumbers = stringOfNumbers.substring(endOfDelimeters + 2);
@@ -47,7 +47,7 @@ function sumNumbers(numbers) {
 
 function sumString(numbersWithDelimiter) {
   extractDelimeters(numbersWithDelimiter);
-  let numbers = formatStringOfNumbers(numbersWithDelimiter);
+  let numbers = extractNumbers(numbersWithDelimiter);
   let sum = sumNumbers(numbers);
   return sum;
 }
