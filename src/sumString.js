@@ -10,9 +10,8 @@ function extractNumbers(string, delimiters) {
   return string.split(new RegExp(delimiters));
 }
 
-function extractDelimeter(delimitersString) {
-  let endOfDelimeter = delimitersString.indexOf("]");
-  return delimitersString.substring(1, endOfDelimeter);
+function extractDelimiter(delimitersString) {
+  return delimitersString.substring(1, delimitersString.indexOf("]"));
 }
 
 function extractDelimeters(numbersWithDelimiter) {
@@ -22,7 +21,8 @@ function extractDelimeters(numbersWithDelimiter) {
     let delimitersString = numbersWithDelimiter.substring(2, endOfDelimeters + 1);
     while (delimitersString.includes("[")) {
       let endOfDelimeter = delimitersString.indexOf("]");
-      delimiters.push(extractDelimeter(delimitersString, delimiters));
+      let delimiter = extractDelimiter(delimitersString);
+      delimiters.push(delimiter);
       delimitersString = delimitersString.substring(endOfDelimeter + 1);
     }
   }
@@ -43,8 +43,7 @@ function sumNumbers(numbers) {
 function addNumbersIn(string) {
   let delimeters = extractDelimeters(string);
   let numbers = extractNumbers(string, delimeters);
-  let sum = sumNumbers(numbers);
-  return sum;
+  return sumNumbers(numbers);
 }
 
 export default addNumbersIn;
