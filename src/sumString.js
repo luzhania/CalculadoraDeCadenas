@@ -34,12 +34,12 @@ function extractDelimeters(numbersWithDelimiter) {
   }
 }
 
-
 function sumNumbers(numbers) {
   let sum = 0;
   for (let actualNumber = 0; actualNumber < numbers.length; actualNumber++) {
-    if (parseInt(numbers[actualNumber]) <= 1000) {
-      sum += parseInt(numbers[actualNumber]);
+    let number = parseInt(numbers[actualNumber]);
+    if (number <= 1000) {
+      sum += number;
     }
   }
   return sum;
