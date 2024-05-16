@@ -9,6 +9,10 @@ function formatDelimeter(delimiter) {
 }
 
 function formatStringOfNumbers(stringOfNumbers) {
+  if (stringOfNumbers.startsWith("//")) {
+    let endOfDelimeters = stringOfNumbers.lastIndexOf("]");
+    stringOfNumbers = stringOfNumbers.substring(endOfDelimeters + 2);
+  }
   return stringOfNumbers.split(new RegExp(',' + delimiters));
 }
 
@@ -27,14 +31,9 @@ function extractDelimeters(numbersWithDelimiter) {
       delimiters = extractDelimeter(unformatedDelimiters);
       unformatedDelimiters = unformatedDelimiters.substring(endOfDelimeter + 1);
     }
-    return extractNumbers(numbersWithDelimiter, endOfDelimeters);
   }
-  return numbersWithDelimiter;
 }
 
-function extractNumbers(numbersWithDelimiter, endOfDelimeter) {
-  return numbersWithDelimiter.substring(endOfDelimeter + 2)
-}
 
 function sumNumbers(numbers) {
   let sum = 0;
@@ -47,8 +46,8 @@ function sumNumbers(numbers) {
 }
 
 function sumString(numbersWithDelimiter) {
-  let stringOfNumbers = extractDelimeters(numbersWithDelimiter);
-  let numbers = formatStringOfNumbers(stringOfNumbers);
+  extractDelimeters(numbersWithDelimiter);
+  let numbers = formatStringOfNumbers(numbersWithDelimiter);
   let sum = sumNumbers(numbers);
   return sum;
 }

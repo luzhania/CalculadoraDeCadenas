@@ -1,3 +1,4 @@
 función sumString larga y poco entendible
 cambiar nombre de función formatStringWithDelimeter para que demuestre la intención
+función extractDelimeters muy larga, con más de una responsabilidad
 cambiar nombre de función formatStringOfNumbers para que demuestre la intención
