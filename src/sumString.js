@@ -10,21 +10,14 @@ function extractNumbers(string, delimiters) {
   return string.split(new RegExp(delimiters));
 }
 
-function extractDelimiter(delimitersString) {
-  return delimitersString.substring(1, delimitersString.indexOf("]"));
-}
+function extractDelimeters(string) {
+  let delimiters = [",", "-"];
+  if (string.startsWith("//")) {
+    let delimitersStart = string.indexOf("[") + 1;
+    let delimitersEnd = string.lastIndexOf("]");
 
-function extractDelimeters(numbersWithDelimiter) {
-  let delimiters = [",","-"];
-  if (numbersWithDelimiter.startsWith("//")) {
-    let endOfDelimeters = numbersWithDelimiter.lastIndexOf("]");
-    let delimitersString = numbersWithDelimiter.substring(2, endOfDelimeters + 1);
-    while (delimitersString.includes("[")) {
-      let endOfDelimeter = delimitersString.indexOf("]");
-      let delimiter = extractDelimiter(delimitersString);
-      delimiters.push(delimiter);
-      delimitersString = delimitersString.substring(endOfDelimeter + 1);
-    }
+    let delimitersString = string.substring(delimitersStart, delimitersEnd);    
+    delimiters = delimiters.concat(delimitersString.split("]["));
   }
   return delimiters.map(formatDelimeter).join("|");
 }

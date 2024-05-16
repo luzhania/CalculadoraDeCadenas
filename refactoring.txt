@@ -3,10 +3,10 @@ cambiar nombre de función formatStringWithDelimeter para que demuestre la inten
 función extractDelimeters con más de una responsabilidad
 cambiar nombre de función formatStringOfNumbers para que demuestre la intención
 repetición de código en sumNumbers
-función extractDelimeters muy larga
 unformatedDelimiters no refleja intención
 tipo de dato de variable delimeters no apropiado
 nombre stringOfNumbers en funcion extractNumbers, muy largo y no refleja intención
 nombre numbersWithDelimiter en funcion sumString , muy largo y no refleja intención
 nombre de función sumString no refleja muy bien la intención.
 función extractDelimeter muy larga
+función extractDelimeters muy larga
