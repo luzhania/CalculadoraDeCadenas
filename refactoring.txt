@@ -8,3 +8,4 @@ unformatedDelimiters no refleja intención
 tipo de dato de variable delimeters no apropiado
 nombre stringOfNumbers en funcion extractNumbers, muy largo y no refleja intención
 nombre numbersWithDelimiter en funcion sumString , muy largo y no refleja intención
+nombre de función sumString no refleja muy bien la intención.

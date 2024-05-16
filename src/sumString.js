@@ -40,11 +40,11 @@ function sumNumbers(numbers) {
   return sum;
 }
 
-function sumString(string) {
+function addNumbersIn(string) {
   let delimeters = extractDelimeters(string);
   let numbers = extractNumbers(string, delimeters);
   let sum = sumNumbers(numbers);
   return sum;
 }
 
-export default sumString;
+export default addNumbersIn;

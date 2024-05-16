@@ -1,4 +1,4 @@
-import sumString from "./sumString.js";
+import addNumbersIn from "./sumString.js";
 
 const stringToSumInput = document.querySelector("#string-to-sum");
 const form = document.querySelector("#sum-form");
@@ -9,5 +9,5 @@ form.addEventListener("submit", (event) => {
 
   const stringToSum = stringToSumInput.value;
 
-  div.innerHTML = "<p>" + sumString(stringToSum) + "</p>";
+  div.innerHTML = "<p>" + addNumbersIn(stringToSum) + "</p>";
 });
